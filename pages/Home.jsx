@@ -1,7 +1,14 @@
 import Card from "./Components/Card";
 import NavBar from "./Components/Nav";
+import axios from "axios";
 
 function Home() {
+
+  function fetchBlogs()
+  {
+    
+  }
+
   return (
     <>
       <NavBar />
