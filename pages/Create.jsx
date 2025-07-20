@@ -6,9 +6,6 @@ function Create() {
       <NavBar />
 
       <div>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Add New Blog Post</title>
         <section className="flex-grow container mx-auto p-6">
           <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
             Create a New Blog Post
@@ -50,6 +47,23 @@ function Create() {
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter blog title"
+              />
+            </div>
+            {/* Image */}
+            <div className="mb-4">
+              <label
+                htmlFor="image"
+                className="block text-gray-700 font-semibold mb-2"
+              >
+                Image
+              </label>
+              <input
+                type="text"
+                id="image"
+                name="image"
+                required
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter Image url"
               />
             </div>
             {/* description */}

@@ -11,9 +11,7 @@ function Card({ blog }) {
               alt="laravel9-1646792144.jpg"
             />
             <div className="flex items-center mb-3">
-              <span className="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-bold leading-5 text-white font-display mr-2 capitalize bg-red-500">
-                {blog.id}
-              </span>
+        
               <p className="font-mono text-xs font-normal opacity-75 text-black">
                 {blog.createdAt}
               </p>
