@@ -1,14 +1,26 @@
+import { useParams } from "react-router-dom";
 import NavBar from "./Components/Nav";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function Edit()
 {
+  var param = useParams()
+  const [blog, setBlog] = useState([])
+  async function fetchBlog()
+  {
+    const resp = await axios.get("https://687af350abb83744b7ee4634.mockapi.io/blogs/"+param.id)
+    console.log(resp)
+    setBlog(resp.data)
+  } 
+  useEffect(()=>{
+    fetchBlog();
+  }, [])
     return (
     <>
       <NavBar />
 
       <div>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Add New Blog Post</title>
         <section className="flex-grow container mx-auto p-6">
           <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
@@ -33,7 +45,7 @@ function Edit()
                 name="title"
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter blog title"
+                value={blog.title}
               />
             </div>
             {/* Title */}
@@ -50,7 +62,24 @@ function Edit()
                 name="subtitle"
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter blog title"
+                value={blog.subtitle}
+              />
+            </div>
+            {/* Image */}
+            <div className="mb-4">
+              <label
+                htmlFor="image"
+                className="block text-gray-700 font-semibold mb-2"
+              >
+                Image
+              </label>
+              <input
+                type="text"
+                id="image"
+                name="image"
+                required
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={blog.image}
               />
             </div>
             {/* description */}
@@ -67,7 +96,7 @@ function Edit()
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Write your blog content here"
-                defaultValue={""}
+                defaultValue={blog.description}
               />
             </div>
             {/* Submit Button */}

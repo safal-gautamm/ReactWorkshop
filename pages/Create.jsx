@@ -32,7 +32,7 @@ function Create() {
                 placeholder="Enter blog title"
               />
             </div>
-            {/* Title */}
+            {/* SubTitle */}
             <div className="mb-4">
               <label
                 htmlFor="subtitle"

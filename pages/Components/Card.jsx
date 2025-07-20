@@ -20,15 +20,15 @@ function Card({ blog }) {
               <span className="link-underline link-underline-black text-black">
                 {blog.title}
               </span>
+            </p><p className="font-display max-w-sm text-[18px] font-serif leading-tight max-h-8 overflow-hidden opacity-60">
+              <span className="link-underline link-underline-black text-black">
+                {blog.subtitle}
+              </span>
             </p>
             <p className="font-display max-w-sm text-[15px] leading-tight max-h-11 overflow-hidden">
               <span className=" font-mono">{blog.description}</span>
             </p>
-            <p className="font-display max-w-sm text-2xl font-bold leading-tight">
-              <span className="link-underline link-underline-black text-black">
-                $ {blog.price}
-              </span>
-            </p>
+            
           </a>
         </div>
       </Link>

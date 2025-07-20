@@ -1,19 +1,19 @@
 import axios from "axios";
 import NavBar from "./Components/Nav";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function Single() {
   const [blog, setBlog] = useState([]);
   const params = useParams();
-const navigate = useNavigate()
+  const navigate = useNavigate();
   async function deleteBlog() {
     const resp = await axios.delete(
       "https://687af350abb83744b7ee4634.mockapi.io/blogs/" + params.id
     );
     if (resp.status == 200) {
       alert("Deleted Successfully !!!");
-      navigate("/")
+      navigate("/");
     }
   }
 
@@ -46,6 +46,9 @@ const navigate = useNavigate()
           <h1 className="font-bold break-normal text-3xl md:text-5xl">
             {blog.title}
           </h1>
+          <h3 className="font-semibold text-2xl">
+            {blog.subtitle}
+          </h3>
         </div>
 
         {/* Image */}
@@ -68,19 +71,18 @@ const navigate = useNavigate()
             </div>
           </div>
         </div>
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center my-8">
           <button
             onClick={deleteBlog}
-            className="
-      bg-red-100 text-red-600 
-      px-6 py-2 rounded-full font-semibold
-      border border-red-300
-      hover:bg-red-600 hover:text-white hover:shadow-lg
-      transition-all duration-300 ease-in-out
-    "
+            className="bg-red-100 text-red-600 px-6 mx-3 py-2 rounded-full font-semibold border border-red-300 hover:bg-red-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out"
           >
             🗑 Delete Blog
           </button>
+          <Link to={"/edit/blogs/"+blog.id} >
+            <button className="bg-green-100 text-green-600 px-6 mx-3 py-2 rounded-full font-semibold border border-green-300 hover:bg-green-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out">
+              ✏️ Edit Blog
+            </button>
+          </Link>
         </div>
       </div>
     </>

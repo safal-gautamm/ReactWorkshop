@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function NavBar() {
   const nav = useNavigate();
@@ -9,11 +9,11 @@ function NavBar() {
     <>
       <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900 ">
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
-          <a href="#" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
               {"{SaFal}."}
             </span>
-          </a>
+          </Link>
           <div className="flex items-center lg:order-2">
             <div className="hidden mt-2 mr-4 sm:inline-block">
               <span />
