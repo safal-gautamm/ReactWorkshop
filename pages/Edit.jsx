@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "./Components/Nav";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -6,16 +6,40 @@ import { useEffect, useState } from "react";
 function Edit()
 {
   var param = useParams()
-  const [blog, setBlog] = useState([])
-  async function fetchBlog()
+  // const [blog, setBlog] = useState([])
+  // async function fetchBlog()
+  // {
+  //   const resp = await axios.get("https://687af350abb83744b7ee4634.mockapi.io/blogs/"+param.id)
+  //   console.log(resp)
+  //   setBlog(resp.data)
+  // } 
+  // useEffect(()=>{
+  //   fetchBlog();
+  // }, [])
+
+
+  const navigate = useNavigate()
+  const [title, setTitle] = useState("")
+  const [subTitle, setSubTitle] = useState("")
+  const [desc, setDesc] = useState("")
+  const [image, setImage] = useState("")
+
+  async function editBlog(e)
   {
-    const resp = await axios.get("https://687af350abb83744b7ee4634.mockapi.io/blogs/"+param.id)
-    console.log(resp)
-    setBlog(resp.data)
-  } 
-  useEffect(()=>{
-    fetchBlog();
-  }, [])
+    e.preventDefault()
+    const resp = await axios.put("https://687af350abb83744b7ee4634.mockapi.io/blogs/"+param.id,{
+      title : title,
+      subtitle : subTitle,
+      description : desc,
+      image : image
+    });
+    if(resp.status ==200)
+    {
+      alert("Editted !")
+      navigate("/single/"+param.id)
+    }
+  }
+
     return (
     <>
       <NavBar />
@@ -27,9 +51,8 @@ function Edit()
             Edit Blog Post
           </h1>
           <form
-            action="/addBlog"
-            method="POST"
             className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md"
+            onSubmit={editBlog}
           >
             {/* Title */}
             <div className="mb-4">
@@ -45,7 +68,8 @@ function Edit()
                 name="title"
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={blog.title}
+                // value={blog.title}
+                onChange={(e)=>{setTitle(e.target.value)}}
               />
             </div>
             {/* Title */}
@@ -62,7 +86,8 @@ function Edit()
                 name="subtitle"
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={blog.subtitle}
+                // value={blog.subtitle}
+                onChange={(e)=>{setSubTitle(e.target.value)}}
               />
             </div>
             {/* Image */}
@@ -79,7 +104,8 @@ function Edit()
                 name="image"
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={blog.image}
+                // value={blog.image}
+                onChange={(e)=>{setImage(e.target.value)}}
               />
             </div>
             {/* description */}
@@ -96,7 +122,8 @@ function Edit()
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Write your blog content here"
-                defaultValue={blog.description}
+                // defaultValue={blog.description}
+                onChange={(e)=>{setDesc(e.target.value)}}
               />
             </div>
             {/* Submit Button */}

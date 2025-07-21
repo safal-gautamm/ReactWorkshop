@@ -1,6 +1,32 @@
+import { useState } from "react";
 import NavBar from "./Components/Nav";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Create() {
+
+  const navigate = useNavigate()
+  const [title, setTitle] = useState("")
+  const [subTitle, setSubTitle] = useState("")
+  const [desc, setDesc] = useState("")
+  const [image, setImage] = useState("")
+
+  async function postData(e)
+  {    
+    e.preventDefault()
+    const resp = await axios.post("https://687af350abb83744b7ee4634.mockapi.io/blogs",{
+      title : title,
+      subtitle : subTitle,
+      description : desc,
+      image : image
+    })
+    console.log(resp)
+    if(resp.status == 201)
+    {
+      navigate('/')
+    }
+  }
+
   return (
     <>
       <NavBar />
@@ -11,9 +37,9 @@ function Create() {
             Create a New Blog Post
           </h1>
           <form
-            action="/addBlog"
-            method="POST"
+            // action="/addBlog"
             className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md"
+            onSubmit={postData}
           >
             {/* Title */}
             <div className="mb-4">
@@ -30,6 +56,7 @@ function Create() {
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter blog title"
+                onChange={(e)=>setTitle(e.target.value)}
               />
             </div>
             {/* SubTitle */}
@@ -47,6 +74,7 @@ function Create() {
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter blog title"
+                onChange={(e)=>setSubTitle(e.target.value)}
               />
             </div>
             {/* Image */}
@@ -64,6 +92,7 @@ function Create() {
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter Image url"
+                onChange={(e)=>setImage(e.target.value)}
               />
             </div>
             {/* description */}
@@ -81,6 +110,7 @@ function Create() {
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Write your blog content here"
                 defaultValue={""}
+                onChange={(e)=>setDesc(e.target.value)}
               />
             </div>
             {/* Submit Button */}
