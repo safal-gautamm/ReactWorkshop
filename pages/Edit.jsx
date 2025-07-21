@@ -5,16 +5,16 @@ import { useEffect, useState } from "react";
 
 function Edit() {
   var param = useParams();
-  // const [blog, setBlog] = useState([])
-  // async function fetchBlog()
-  // {
-  //   const resp = await axios.get("https://687af350abb83744b7ee4634.mockapi.io/blogs/"+param.id)
-  //   console.log(resp)
-  //   setBlog(resp.data)
-  // }
-  // useEffect(()=>{
-  //   fetchBlog();
-  // }, [])
+  const [blog, setBlog] = useState([])
+  async function fetchBlog()
+  {
+    const resp = await axios.get("https://687af350abb83744b7ee4634.mockapi.io/blogs/"+param.id)
+    console.log(resp)
+    setBlog(resp.data)
+  }
+  useEffect(()=>{
+    fetchBlog();
+  }, [])
 
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -69,7 +69,7 @@ function Edit() {
                 name="title"
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                // value={blog.title}
+                defaultValue={blog.title}
                 onChange={(e) => {
                   setTitle(e.target.value);
                 }}
