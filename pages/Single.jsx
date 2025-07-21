@@ -14,6 +14,8 @@ function Single() {
     if (resp.status == 200) {
       alert("Deleted Successfully !!!");
       navigate("/");
+    } else {
+      alert("Error Aayo !!!");
     }
   }
 
@@ -46,9 +48,7 @@ function Single() {
           <h1 className="font-bold break-normal text-3xl md:text-5xl">
             {blog.title}
           </h1>
-          <h3 className="font-semibold text-2xl">
-            {blog.subtitle}
-          </h3>
+          <h3 className="font-semibold text-2xl">{blog.subtitle}</h3>
         </div>
 
         {/* Image */}
@@ -78,7 +78,7 @@ function Single() {
           >
             🗑 Delete Blog
           </button>
-          <Link to={"/edit/blogs/"+blog.id} >
+          <Link to={"/edit/blogs/" + blog.id}>
             <button className="bg-green-100 text-green-600 px-6 mx-3 py-2 rounded-full font-semibold border border-green-300 hover:bg-green-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out">
               ✏️ Edit Blog
             </button>

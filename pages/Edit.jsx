@@ -3,44 +3,45 @@ import NavBar from "./Components/Nav";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function Edit()
-{
-  var param = useParams()
+function Edit() {
+  var param = useParams();
   // const [blog, setBlog] = useState([])
   // async function fetchBlog()
   // {
   //   const resp = await axios.get("https://687af350abb83744b7ee4634.mockapi.io/blogs/"+param.id)
   //   console.log(resp)
   //   setBlog(resp.data)
-  // } 
+  // }
   // useEffect(()=>{
   //   fetchBlog();
   // }, [])
 
+  const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const [subTitle, setSubTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [image, setImage] = useState("");
 
-  const navigate = useNavigate()
-  const [title, setTitle] = useState("")
-  const [subTitle, setSubTitle] = useState("")
-  const [desc, setDesc] = useState("")
-  const [image, setImage] = useState("")
-
-  async function editBlog(e)
-  {
-    e.preventDefault()
-    const resp = await axios.put("https://687af350abb83744b7ee4634.mockapi.io/blogs/"+param.id,{
-      title : title,
-      subtitle : subTitle,
-      description : desc,
-      image : image
-    });
-    if(resp.status ==200)
-    {
-      alert("Editted !")
-      navigate("/single/"+param.id)
+  async function editBlog(e) {
+    e.preventDefault();
+    const resp = await axios.put(
+      "https://687af350abb83744b7ee4634.mockapi.io/blogs/" + param.id,
+      {
+        title: title,
+        subtitle: subTitle,
+        description: desc,
+        image: image,
+      }
+    );
+    if (resp.status == 200) {
+      alert("Editted !");
+      navigate("/single/" + param.id);
+    } else {
+      alert("Error aayo !!");
     }
   }
 
-    return (
+  return (
     <>
       <NavBar />
 
@@ -69,7 +70,9 @@ function Edit()
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 // value={blog.title}
-                onChange={(e)=>{setTitle(e.target.value)}}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
               />
             </div>
             {/* Title */}
@@ -87,7 +90,9 @@ function Edit()
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 // value={blog.subtitle}
-                onChange={(e)=>{setSubTitle(e.target.value)}}
+                onChange={(e) => {
+                  setSubTitle(e.target.value);
+                }}
               />
             </div>
             {/* Image */}
@@ -105,7 +110,9 @@ function Edit()
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 // value={blog.image}
-                onChange={(e)=>{setImage(e.target.value)}}
+                onChange={(e) => {
+                  setImage(e.target.value);
+                }}
               />
             </div>
             {/* description */}
@@ -123,7 +130,9 @@ function Edit()
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Write your blog content here"
                 // defaultValue={blog.description}
-                onChange={(e)=>{setDesc(e.target.value)}}
+                onChange={(e) => {
+                  setDesc(e.target.value);
+                }}
               />
             </div>
             {/* Submit Button */}
@@ -142,4 +151,4 @@ function Edit()
   );
 }
 
-export default Edit
+export default Edit;
