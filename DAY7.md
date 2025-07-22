@@ -1,9 +1,11 @@
 ## Hosting
 
 ```text
-                +----> VPS
-project---------|
-                +----> C Panel
+                           +----> VPS
+                           |
+project_deployment---------|
+                           | 
+                           +----> C Panel
 ```
 
 ### VPS
@@ -16,7 +18,7 @@ project---------|
 (premium)
 - Prabhu Host
 
-But if it exceeds free tier `C panel` is better
+But if VPS exceeds free tier `C panel` is better
 
 ### Vercel
 - founded Next.js, socket.io

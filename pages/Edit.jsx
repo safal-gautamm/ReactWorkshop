@@ -89,7 +89,7 @@ function Edit() {
                 name="subtitle"
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                // value={blog.subtitle}
+                defaultValue={blog.subtitle}
                 onChange={(e) => {
                   setSubTitle(e.target.value);
                 }}
@@ -109,7 +109,7 @@ function Edit() {
                 name="image"
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                // value={blog.image}
+                defaultValue={blog.image}
                 onChange={(e) => {
                   setImage(e.target.value);
                 }}
@@ -129,7 +129,7 @@ function Edit() {
                 required
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Write your blog content here"
-                // defaultValue={blog.description}
+                defaultValue={blog.description}
                 onChange={(e) => {
                   setDesc(e.target.value);
                 }}
