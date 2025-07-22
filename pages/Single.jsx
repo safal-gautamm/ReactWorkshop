@@ -37,6 +37,7 @@ function Single() {
 
   return (
     <>
+    <title>{blog.title}</title>
       <NavBar />
 
       <div className="bg-white font-sans leading-normal tracking-normal">

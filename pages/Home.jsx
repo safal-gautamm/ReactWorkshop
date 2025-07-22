@@ -24,6 +24,7 @@ function Home() {
 
   return (
     <>
+      <title>Blog management System</title>
       <NavBar />
 
       <div className="flex flex-row flex-wrap justify-around">

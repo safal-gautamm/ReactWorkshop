@@ -10,6 +10,7 @@ function App() {
 
 
   return (
+      <>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />}/>
@@ -20,6 +21,8 @@ function App() {
 
         </Routes>
       </BrowserRouter>
+      <link rel='icon' href='https://www.svgrepo.com/show/475174/avatar.svg' />
+      </>
       
   )
 }

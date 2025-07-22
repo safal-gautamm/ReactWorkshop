@@ -46,7 +46,7 @@ function Edit() {
       <NavBar />
 
       <div>
-        <title>Add New Blog Post</title>
+        <title>Edit Blog Post</title>
         <section className="flex-grow container mx-auto p-6">
           <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
             Edit Blog Post

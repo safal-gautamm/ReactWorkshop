@@ -29,6 +29,8 @@ function Create() {
 
   return (
     <>
+    <title>Create New Post</title>
+
       <NavBar />
 
       <div>
